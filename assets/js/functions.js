@@ -66,6 +66,41 @@ var sec=moment().diff(date1,"seconds")*(-1);
 }
 function DisplayTime(days,hours,min,sec)
 {
+    var years=moment().year()-startYear;
+    
+    $("#title").empty();
+    
+    var fraction=days/366;
+    var str="";
+    if(fraction==0)
+        {
+          
+            str="So close you can taste it";
+        }
+    else if(fraction<0.1)
+        {
+            str="The horror will end soon";
+        }
+    else if(fraction<0.25)
+        {
+            str="Aren't you kinda sick of being "+years-1;
+        }
+    else if(fraction<0.5)
+        {
+            str="Over the hump!";
+        }
+    else if(fraction<0.75)
+        {
+            str="Magic's kinda worn off";
+        }
+    else 
+        {
+            str=years+" for the fist time";
+        }
+    $("#title").append(str);
+    
+    
+    
     $("#timer").empty();
     $("#timer").append(days+"d "+hours%24+"h "+min%60+"m "+sec%60+"s ");
 }
@@ -74,6 +109,9 @@ function TimerOver()
     var years=moment().year()-startYear;
     
      overTrue=true;
+    $("#title").empty();
+    $("#title").append("~~Happy "+years+"th Birthday~~");
+    
      $("#timer").empty();
     $("#timer").append("~~Happy "+years+"th Birthday~~");
 }
